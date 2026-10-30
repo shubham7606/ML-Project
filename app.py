@@ -1,24 +1,14 @@
 import streamlit as st
 from pathlib import Path
 
-# --------------------------------------------------
-# PAGE CONFIGURATION
-# --------------------------------------------------
+
 st.set_page_config(
     page_title="ML Model Hub",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
 
-# --------------------------------------------------
-# PATHS
-# Folder structure:
-#   app.py
-#   images/mobile_results.png
-#   images/crop_results.png
-#   pages/1_mobile_price_prediction.py
-#   pages/2_crop_prediction.py
-# --------------------------------------------------
+
 IMG_DIR = Path(__file__).parent / "images"
 
 
@@ -42,24 +32,17 @@ def show_screenshot(filename, caption, download_key):
             st.info(f"Screenshot not found: images/{filename}")
 
 
-# --------------------------------------------------
-# CUSTOM CSS
-# --------------------------------------------------
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
 
-    /* ---------------------------------------------
-       HIDE SIDEBAR
-    --------------------------------------------- */
+
     [data-testid="stSidebar"],
     [data-testid="collapsedControl"] {
         display: none !important;
     }
 
-    /* ---------------------------------------------
-       GLOBAL STYLES
-    --------------------------------------------- */
+
     .stApp {
         background: linear-gradient(
             180deg,
@@ -81,9 +64,6 @@ st.markdown("""
         color: #203a35;
     }
 
-    /* ---------------------------------------------
-       TOP NAVIGATION HEADER
-    --------------------------------------------- */
     .topbar {
         display: flex;
         align-items: center;
@@ -115,9 +95,6 @@ st.markdown("""
         white-space: nowrap;
     }
 
-    /* ---------------------------------------------
-       HERO SECTION
-    --------------------------------------------- */
     .hero {
         background: #3a7592;
         padding: 42px;
@@ -164,9 +141,7 @@ st.markdown("""
         margin: 15px 25px 0 20px;
     }
 
-    /* ---------------------------------------------
-       STATISTICS
-    --------------------------------------------- */
+
     .stats-grid {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -200,9 +175,7 @@ st.markdown("""
         margin-top: 4px;
     }
 
-    /* ---------------------------------------------
-       PROJECT SECTION HEADINGS
-    --------------------------------------------- */
+
     .section-heading {
         font-family: 'Manrope', sans-serif;
         color: #203a35;
@@ -217,9 +190,7 @@ st.markdown("""
         margin-bottom: 24px;
     }
 
-    /* ---------------------------------------------
-       PROJECT CARDS
-    --------------------------------------------- */
+
     div[data-testid="stVerticalBlockBorderWrapper"] {
         background: #ffffff;
         border: 1px solid #e1e7dc;
@@ -267,10 +238,7 @@ st.markdown("""
         font-weight: 700;
     }
 
-    /* ---------------------------------------------
-       OPEN / PAGE LINK BUTTONS
-       Keep the same color on hover, focus and click
-    --------------------------------------------- */
+
     .stPageLink a,
     div[data-testid="stPageLink"] a {
         background-color: #3a7592 !important;
@@ -307,9 +275,7 @@ st.markdown("""
         fill: #ffffff !important;
     }
 
-    /* ---------------------------------------------
-       BOTTOM INFORMATION BANNER
-    --------------------------------------------- */
+
     .bottom-banner {
         background: linear-gradient(
             120deg,
@@ -336,9 +302,7 @@ st.markdown("""
         line-height: 1.8;
     }
 
-    /* ---------------------------------------------
-       RESPONSIVE DESIGN
-    --------------------------------------------- */
+
     @media (max-width: 700px) {
         .hero {
             padding: 27px 22px;
@@ -369,9 +333,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
-# --------------------------------------------------
-# HERO SECTION
-# --------------------------------------------------
+
 st.markdown("""
 <div class="hero">
     <div class="hero-decoration">🧠</div>
@@ -385,9 +347,7 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# --------------------------------------------------
-# STATISTICS
-# --------------------------------------------------
+
 st.markdown("""
 <div class="stats-grid">
     <div class="stat-card">
@@ -408,9 +368,7 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# --------------------------------------------------
-# PROJECT CARDS
-# --------------------------------------------------
+
 st.markdown(
     '<div class="section-heading">Explore Your Projects</div>',
     unsafe_allow_html=True
@@ -448,7 +406,7 @@ with col1:
             use_container_width=True
         )
 
-        # Screenshot of the model comparison table
+        
         show_screenshot(
             filename="mobile_results.png",
             caption="Mobile price prediction: model performance comparison",
@@ -478,7 +436,7 @@ with col2:
             use_container_width=True
         )
 
-        # Screenshot of the model comparison table
+    
         show_screenshot(
             filename="crop_results.png",
             caption="Crop prediction: model performance comparison",

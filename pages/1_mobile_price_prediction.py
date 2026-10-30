@@ -3,9 +3,7 @@ import pandas as pd
 import joblib
 from scipy.special import boxcox as boxcox_transform
 
-# --------------------------------------------------
-# PAGE CONFIGURATION
-# --------------------------------------------------
+
 st.set_page_config(
     page_title="MobileIQ | Price Predictor",
     page_icon="📱",
@@ -13,9 +11,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# --------------------------------------------------
-# LOAD TRAINED OBJECTS
-# --------------------------------------------------
+
 @st.cache_resource
 def load_objects():
     boxcox_lambdas = joblib.load("boxcox_lambdas.pkl")
@@ -28,9 +24,7 @@ boxcox_lambdas, model, scaler = load_objects()
 # Preserve exact training feature names and order
 feature_columns = list(scaler.feature_names_in_)
 
-# --------------------------------------------------
-# CUSTOM CSS
-# --------------------------------------------------
+
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
@@ -215,9 +209,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# --------------------------------------------------
-# HERO SECTION
-# --------------------------------------------------
+
 st.markdown("""
 <div class="hero">
     <div class="hero-tag">📱 SMART DEVICE ANALYTICS</div>
@@ -230,9 +222,7 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# --------------------------------------------------
-# PROCESSOR & DISPLAY
-# --------------------------------------------------
+
 st.markdown(
     '<div class="section-heading">⚙️ Processor & Display</div>',
     unsafe_allow_html=True
@@ -287,9 +277,7 @@ with col5:
             0.5, 3.0, 1.0, 0.1
         )
 
-# --------------------------------------------------
-# MEMORY & STORAGE
-# --------------------------------------------------
+
 st.markdown(
     '<div class="section-heading">💾 Memory & Storage</div>',
     unsafe_allow_html=True
@@ -317,9 +305,7 @@ with col7:
             [1, 1.5, 2, 3, 4, 6]
         )
 
-# --------------------------------------------------
-# CAMERA & BATTERY
-# --------------------------------------------------
+
 st.markdown(
     '<div class="section-heading">📸 Camera & Battery</div>',
     unsafe_allow_html=True
@@ -353,9 +339,6 @@ with col10:
             800, 10000, 3000, step=100
         )
 
-# --------------------------------------------------
-# DEVICE SUMMARY
-# --------------------------------------------------
 st.markdown(
     '<div class="section-heading">📋 Device Overview</div>',
     unsafe_allow_html=True
@@ -389,9 +372,7 @@ for col, (label, value) in zip(summary_cols, summary):
 
 st.write("")
 
-# --------------------------------------------------
-# PREDICTION
-# --------------------------------------------------
+
 predict_col, reset_col = st.columns([3, 1])
 
 with predict_col:
